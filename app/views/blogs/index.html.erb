@@ -1,0 +1,39 @@
+<div class="mt-5 text-center">
+
+  <div class="px-5 mx-5">
+    <div class="d-inline-flex justify-content-between w-100 mb-5">
+      <div class="fw-bold h3">Blogs</div>
+      <%= link_to 'Create new blog', new_blog_path %>
+    </div>
+
+    <div class="d-inline-flex justify-content-between w-100">
+      <%= link_to 'All Blogs', blogs_path, class:"border px-3 py-2 border-dark text-dark rounded" %>
+      <%= link_to 'Draft Blogs', blogs_path(state: 'draft'), class:"border px-3 py-2 border-secondary text-secondary rounded" %>
+      <%= link_to 'Published Blogs', blogs_path(state: 'published'), class:"border px-3 py-2 border-success text-success rounded" %>
+    </div>
+  </div>
+
+  <div class="m-5 p-5">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">State</th>
+          <th scope="col">Edit Blog</th>
+          <th scope="col">Delete Blog</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @blogs.each do |blog| %>
+          <tr>
+            <th scope="row"><%= link_to blog.title, blog_path(blog.id) %></th>
+            <td><%= blog.state %></td>
+            <td><%= link_to 'Edit', edit_blog_path(blog.id) %>
+            <td>
+            <%= link_to "Destroy", blog_path(blog.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
