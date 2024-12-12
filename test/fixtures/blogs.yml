@@ -1,0 +1,5 @@
+one:
+  title: My First Blog
+  content: This is my first blog on Ruby on rails
+  summary: Short summary
+  state: draft
