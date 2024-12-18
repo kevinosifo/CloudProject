@@ -1,7 +1,10 @@
 class BlogsController < ApplicationController
   def index
-    @blogs = Blog.all
-    @blogs = @blogs.where(state: params['state']) if params['state'].present?
+    # Using ransack for search and filtering
+    @q = Blog.ransack(params[:q]) # Initialize ransack search object with queryy parameters
+    @blogs = @q.result(distinct: true) # Get the results from the search
+
+  
   end
 
   def show
