@@ -13,3 +13,108 @@
  *= require_tree .
  *= require_self
  */
+ /* Basic Styling for Blogs Index Page */
+
+/* Set the background color and padding for the page */
+body {
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Center the text and add margin to the container */
+  .text-center {
+    text-align: center;
+  }
+  
+  /* Styling for the heading */
+  h3.fw-bold {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Styling for buttons and links */
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Style for the search/filter form */
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .d-inline-flex {
+    margin-bottom: 15px;
+  }
+  
+  .mt-3 {
+    margin-top: 1rem;
+  }
+  
+  .mb-5 {
+    margin-bottom: 2rem;
+  }
+  
+  .m-5 {
+    margin: 2rem;
+  }
+  
+  /* Styling for the table */
+  .table {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 5px;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  .table th, .table td {
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .table th {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .table tbody td {
+    background-color: #f4f4f4;
+  }
+  
+  .table td a {
+    color: #007bff;
+  }
+  
+  /* Additional style for action buttons (Edit, Delete) */
+  table td a {
+    margin-right: 10px;
+  }
+  
+  table td a:last-child {
+    margin-right: 0;
+  }
+  
