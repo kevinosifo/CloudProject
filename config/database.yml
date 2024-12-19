@@ -11,49 +11,35 @@
 #
 # Configure Using Gemfile
 # gem "pg"
-#
+
 default: &default
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: localhost
-  username: postgres
-  password: <%= ENV["CLOUD_PROJECT_DATABASE_PASSWORD"] %>
+  username: <%= ENV['DATABASE_USERNAME'] || 'postgres' %>
+  password: <%= ENV['DATABASE_PASSWORD'] || ENV['CLOUD_PROJECT_DATABASE_PASSWORD'] %>
 
 production:
   <<: *default
-  database: cloud_project_production
-  username: postgres
-  password: <%= ENV["CLOUD_PROJECT_DATABASE_PASSWORD"] %>
-  host: localhost
-  port: 5432
+  # Use Heroku's DATABASE_URL environment variable for production
+  url: <%= ENV['DATABASE_URL'] %>
 
 test:
   <<: *default
   database: cloud_project_test
   # Use the same credentials for test as production
-  username: postgres
-  password: <%= ENV["CLOUD_PROJECT_DATABASE_PASSWORD"] %>
+  username: <%= ENV['DATABASE_USERNAME'] || 'postgres' %>
+  password: <%= ENV['DATABASE_PASSWORD'] || ENV['CLOUD_PROJECT_DATABASE_PASSWORD'] %>
   host: localhost
   port: 5432
 
 development:
   <<: *default
   database: cloud_project_development
-  # The specified database role being used to connect to PostgreSQL.
-  # To create additional roles in PostgreSQL see `$ createuser --help`.
-  # When left blank, PostgreSQL will use the default role.
-  # The default role is the same name as the operating system user running Rails.
-  username: postgres
-  password: <%= ENV["CLOUD_PROJECT_DATABASE_PASSWORD"] %>
+  username: <%= ENV['DATABASE_USERNAME'] || 'postgres' %>
+  password: <%= ENV['DATABASE_PASSWORD'] || ENV['CLOUD_PROJECT_DATABASE_PASSWORD'] %>
   host: localhost
   port: 5432
-  # Schema search path. The server defaults to $user,public
-  #schema_search_path: myapp,sharedapp,public
-  # Minimum log levels, in increasing order:
-  #   debug5, debug4, debug3, debug2, debug1,
-  #   log, notice, warning, error, fatal, and panic
-  # Defaults to warning.
-  #min_messages: notice
+
